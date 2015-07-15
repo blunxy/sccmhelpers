@@ -7,4 +7,4 @@ Param(
 )
 
 
-Start-CMContentDistribution -ApplicationName "CSIS_Custom_$AppName" -DistributionPointName svr2-sc2012.ad.mtroyal.ca
+Start-CMContentDistribution -ApplicationName "CSIS_Custom_$AppName" -DistributionPointGroupName MRU
