@@ -5,7 +5,7 @@ Param(
     [Parameter(Mandatory=$True)]
     [string]$AppName,
 
-    [string]$TargetCollection = "csis-one-off"
+    [string]$TargetCollection = "CSIS-standard-downstairs"
 )
 $AvailableTime = Get-Date
 $DeploymentTime = $AvailableTime.AddSeconds(1)
