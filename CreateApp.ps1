@@ -42,13 +42,24 @@ $DeploymentParams = @{
 
 
 $DetectionScript = @"
-Set oReg = GetObject("winmgmts:{impersonationLevel=impersonate}!\\.\root\default:StdRegProv")
+Dim oReg
+Set oReg = GetObject("winmgmts:!root/default:StdRegProv")
 
 If oReg.EnumKey(, "Software\CSISCustomInstalls\${APP_REGKEY}", "") = 0 Then
-  wspcript.echo "Key Exists"
+  wscript.stdout.write "Key Exists"
 End If
+
+wscript.quit(0)
 "@
 
 Add-CMScriptDeploymentType @DeploymentParams -ApplicationName $Newapp.LocalizedDisplayName -ScriptText $DetectionScript
 
 Start-CMContentDistribution -ApplicationName $APP_NAME -DistributionPointGroupName 'MRU'
+
+
+$ContentDeploymentParams = @{
+
+    'CollectionName' = 'csis-one-off';
+}
+
+Start-CMApplicationDeployment @ContentDeploymentParams -Name $APP_NAME
