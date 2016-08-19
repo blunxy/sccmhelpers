@@ -6,10 +6,13 @@
     "$TweakedAppName.$AppVersion"
 }
 
-$APP_NAME = "_ZoomIt"
-$APP_VERSION = "4.5"
+$APP_NAME = "FileZilla"
+$APP_VERSION = "3.19.0"
+
+
 $APP_REGKEY = GetAppRegistryKey $APP_NAME $APP_VERSION
-$CONTENT_LOCATION = "\\ad\empl\IT\MergeInstall1\Utils\csis-bats\+install-script-repo\$APP_REGKEY"
+$CONTENT_LOCATION = "\\ad\empl\IT\MergeInstall1\MathComp\sccm.repo\$APP_REGKEY"
+$APP_NAME = "MACO.$APP_NAME"
 
 #### Create a new app
 
@@ -60,6 +63,7 @@ Start-CMContentDistribution -ApplicationName $APP_NAME -DistributionPointGroupNa
 $ContentDeploymentParams = @{
 
     'CollectionName' = 'csis-one-off';
+    'DeployPurpose' = 'Required';
 }
 
 Start-CMApplicationDeployment @ContentDeploymentParams -Name $APP_NAME
