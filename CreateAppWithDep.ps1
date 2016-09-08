@@ -6,8 +6,8 @@
     "$TweakedAppName.$AppVersion"
 }
 
-$APP_NAME = "xamarin vbox push"
-$APP_VERSION = "1"
+$APP_NAME = "vs ent tweak"
+$APP_VERSION = "2015.3"
 
 
 $APP_REGKEY = GetAppRegistryKey $APP_NAME $APP_VERSION
@@ -58,13 +58,4 @@ wscript.quit(0)
 
 Add-CMScriptDeploymentType @DeploymentParams -ApplicationName $Newapp.LocalizedDisplayName -ScriptText $DetectionScript
 
-Start-CMContentDistribution -ApplicationName $APP_NAME -DistributionPointGroupName 'MRU'
-
-
-$ContentDeploymentParams = @{
-
-    'CollectionName' = 'csis-one-off';
-    'DeployPurpose' = 'Required';
-}
-
-# Start-CMApplicationDeployment @ContentDeploymentParams -Name $APP_NAME
+# Start-CMContentDistribution -ApplicationName $APP_NAME -DistributionPointGroupName 'MRU'

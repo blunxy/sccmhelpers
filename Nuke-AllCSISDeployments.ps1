@@ -8,7 +8,7 @@
       it's gonna go buh-bye.
 #>
 
-$ourdeps = Get-CMDeployment | where {$_.SoftwareName -match "^CSIS_" }
+$ourdeps = Get-CMDeployment | where {$_.SoftwareName -match "^MACO" }
 
 foreach ($dep in $ourdeps) {
     Remove-CMDeployment -ApplicationName $dep.SoftwareName -DeploymentId $dep.DeploymentID -Force
